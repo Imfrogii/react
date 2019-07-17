@@ -1,12 +1,13 @@
 import React, {useContext} from 'react';
 import Header from './components/header';
 import Forecast4Days from './components/forecast4Days';
-import MainForecast from './components/MainForecast';
+import OneDayForecast from './components/OneDayForecast';
 import ForecastNow from './components/ForecastNow';
 import Maps from './components/map';
 import './App.css';
 import {Context} from "./Context";
-
+import PropTypes from 'prop-types';
+let coord;
 class App extends React.Component {
 
   constructor(props){
@@ -14,11 +15,15 @@ class App extends React.Component {
     this.state = {
       ready:false,
       weather:undefined,
+      lat:undefined,
+      len:undefined,
+      self:this,
     };
   }
 
-    componentDidMount = async () => {
-      const allForecast = await this.getForecast();
+    componentDidMount = async (position) => {
+      alert(this.props.pos);
+      const allForecast = await this.getForecast(position);
       const time = new Date(allForecast.list[0].dt_txt);
       const num = ((24-time.getHours())/3);
       this.setState({
@@ -26,13 +31,22 @@ class App extends React.Component {
         ready:true,
         num:num,
       });
-
     }
+
+
+  callbackWeth(position){
+    alert(position);
+    coord = position;
+    // console.log(this);
+    //   this.setState({
+    //     lat:cords[0],
+    //     len:cords[1],
+    //   });
+  }
 
   getForecast=async()=>{
     let lat = 37;
     let lon = 55;
-    let cnt = 1;
     let apiForecast = await fetch
           (`http://api.openweathermap.org/data/2.5/forecast?lat=${lon}&lon=${lat}&appid=${process
             .env.REACT_APP_apiKey}`);
@@ -71,13 +85,17 @@ class App extends React.Component {
             <ForecastNow getForecast={this.state.weather.list[0]} city={this.state.weather.city.name}/>
           </div>
           <p></p>
-          <Maps getPosition={this.getPosition}/>
+          <Maps callbackWeth={this.callbackWeth}/>
         </div>
         <div className="main-forecast">
-          <MainForecast getForecast={this.state.weather}/>
+          <span><strong> Погода на 5 дней подробно</strong></span>
+          <OneDayForecast getForecast={this.state.weather.list.slice(0,this.state.num)} index={this.state.num}/>
+          <OneDayForecast getForecast={this.state.weather.list.slice(this.state.num,this.state.num+8)} index={this.state.num}/>
+          <OneDayForecast getForecast={this.state.weather.list.slice(this.state.num+8,this.state.num+16)} index={this.state.num}/>
+          <OneDayForecast getForecast={this.state.weather.list.slice(this.state.num+16,this.state.num+24)} index={this.state.num}/>
+          <OneDayForecast getForecast={this.state.weather.list.slice(this.state.num+24,this.state.num+32)} index={this.state.num}/>
         </div>
       </div>
-
   );
 }
 }

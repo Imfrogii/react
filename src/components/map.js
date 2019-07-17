@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
 import {Context} from "../Context";
-let cord;
+// let cord;
 
 class Maps extends React.Component {
   constructor(props) {
@@ -13,11 +13,12 @@ class Maps extends React.Component {
     };
     this.mapData = {
       center: [55.751574, 37.573856],
-      zoom: 8
+      zoom: 9,
     };
     this.placeMark = {
       geometry: [56.848217, 53.236675]
     };
+    this.cord={};
 
     this.showMap = this.showMap.bind(this);
     this.render = this.render.bind(this);
@@ -28,13 +29,17 @@ class Maps extends React.Component {
     this.placeMark = {
       geometry: [latitude, longitude]
     };
-    cord = this.placeMark;
-    // export {cord};
+    this.cord = this.placeMark;
     this.mapData = {
       center: [latitude, longitude],
-      zoom: 8
+      zoom: 9,
     };
-    this.setState({ ready: true });
+    this.setState({
+      ready: true,
+      coordinates: [latitude, longitude],
+     });
+     let coor = this.state.coordinates;
+     this.props.callbackWeth(coor);
   }
 
 
@@ -51,17 +56,16 @@ class Maps extends React.Component {
   render() {
     if (!this.state.ready) {
       return false;
-    } else
+    }
       return (
-            <Context.Provider value={{cord}}>
+            // <Context.Provider value={{this.cord}}>
         <YMaps>
           <Map defaultState={this.mapData} className="y_map">
             <Placemark {...this.placeMark} />
           </Map>
         </YMaps>
-        </Context.Provider>
+        // </Context.Provider>
       );
-  }
-
+    }
 }
 export default Maps;
