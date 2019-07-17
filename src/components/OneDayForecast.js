@@ -35,7 +35,7 @@ class OneDayForecast extends React.Component {
       img:all[0].weather[0].icon,
       description:all[0].weather[0].description,
       count: all.length,
-      about:all[Math.round(all.length/2)].weather[0].main,
+      // about:all[Math.round(all.length/2)].weather[0].main,
       // date:date,
     })
   }
