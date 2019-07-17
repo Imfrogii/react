@@ -1,14 +1,14 @@
 import React from 'react';
 import '../App.css';
-import sun from '../images/sun.png'
+import PropTypes from 'prop-types';
+import { number } from "prop-types";
+// import sun from '../images/sun.png'
 
 class Forecast4Days extends React.Component {
-
   state={
     tempDay:undefined,
     tempNight:undefined,
     rain:undefined,
-    // city:undefined,
     wind:undefined,
     pressure:undefined,
     date:undefined,
@@ -25,7 +25,7 @@ class Forecast4Days extends React.Component {
     });
     const index = Math.floor(all.length/2);
     console.log(all);
-    if(all.length>=4){
+    if(all.length>=5){
       this.setState({
         tempDay:all[index].main.temp_max,
         tempNigth:all[all.length-1].main.temp_min,
@@ -68,5 +68,15 @@ class Forecast4Days extends React.Component {
     );
   }
 }
+// Forecast4Days.propTypes = {
+//   tempDay: React.PropTypes.number,
+//   tempNight: React.PropTypes.number,
+//   rain: React.PropTypes.number,
+//   wind: React.PropTypes.number,
+//   pressure: React.PropTypes.number,
+//   date: React.PropTypes.string,
+//   img: React.PropTypes.string,
+//   description: React.PropTypes.string,
+// }
 
 export default Forecast4Days;

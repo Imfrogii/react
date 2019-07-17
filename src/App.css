@@ -1,5 +1,9 @@
 body{
-  background-color: rgba(241, 240, 186, 0.44);
+  /* background-image: url("./images/back2.webp"); */
+  background-image: url("./images/1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 .header{
   border-bottom: 2px ridge;
@@ -84,7 +88,7 @@ body{
 
 .y_map{
   margin-top: 2vw;
-  border: 1px ridge rgb(23, 68, 238);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.6);
   width: 90%;
 }
 
@@ -94,9 +98,9 @@ body{
   margin-top: 2vw;
   margin-left: 1vw;
   font-size: 1.7vw;
-  box-shadow: 0 0 8px rgba(5, 9, 32, 0.38);
-  /* border: 1px ridge rgba(156, 156, 152, 0.22); */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.6);
   border-radius: 2%;
+  /* color:rgb(20, 1, 45); */
 }
 .weather-in{
   margin: 0;
@@ -109,6 +113,43 @@ body{
 .weather-now img{
   width: 70%;
   justify-self:center;
+}
+
+.main-forecast{
+  margin-top: 2vw;
+  font-size: 2.5vw;
+  color: rgb(20, 1, 45);
+}
+.daily-forecast{
+  box-shadow: 0 5px 5px 3px rgba(0,0,0,0.4);
+  border-radius: 2%;
+  display: grid;
+  grid-template-columns: 20% 70% 10%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2vw;
+}
+.daily-forecast p{
+  font-size: 2vw;
+  color: rgb(245, 150, 23);
+}
+.hourly{
+  border-bottom: 1px outset;
+  font-size: 1.4vw;
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  justify-content: center;
+  align-items: center;
+  color:rgb(24, 2, 24);
+  /* text-align: center; */
+}
+
+.hourly img{
+  width:50%;
+  justify-self: center;
+  /* align-self: center; */
+
 }
 
 @media screen and (min-width: 650px) {
@@ -128,4 +169,5 @@ font-weight: normal;
 
 h1, p,h2, h3, h4, h5, h6, span, li{
 font-family: "Georgia";
+/* color: rgb(200, 209, 213); */
 }
