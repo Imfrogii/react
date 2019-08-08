@@ -1,45 +1,27 @@
 body{
   /* background-image: url("./images/back2.webp"); */
-  background-image: url("./images/1.jpg");
+  background-image: url("./assets/1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  /* transition: background-image 0.4s ease-out; */
 }
-.header{
-  border-bottom: 2px ridge;
-  display: grid;
-  grid-template-columns: 15% 70% 15%;
-  max-height: 6vh;
-  height: 3vw;
-  padding: 0.5vw;
-  align-items: center;
+.apixuImg{
+  background-image: url("./assets/2.jpg");
 }
-.header .city{
-  /* display: flex; */
-  margin-left: auto;
-  margin-right: 2vw;
-  font-size: 2vw;
-  color: rgba(94, 175, 235, 0.97);
+
+
+/* .full-forecast-apixu{
+  display: none;
+} */
+.noApixu{
+  display: none;
 }
-.header ul{
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
+.notOpenWeather{
+  display: none;
 }
-.header ul li{
-  float: left;
-  margin-left: 5vw;
-  display: block;
-}
-.header ul li:hover{
-  color: blue;
-  /* font-size: 2.02vw; */
-  text-shadow: 2px 0px 3px black;
-}
-.logo{
-  /* display: flex; */
-  margin-left: 2vw;
-  font-size: 2vw;
+.full-forecast-apixu .imga{
+  width:8vw;
 }
 .forecast-4Days{
   display: grid;
@@ -48,7 +30,7 @@ body{
 .forecast-4Days a{
   margin-top: 2vw;
   margin-left: 1vw;
-  padding: 1vw;
+  /* padding: 1vw; */
   border: 1px ridge rgba(156, 156, 152, 0.22);
   border-radius: 4%;
   color:black;
@@ -68,18 +50,19 @@ body{
 }
 .forecast{
   display: grid;
-  grid-template-rows: 10% 70% 10% 10%;
+  /* grid-template-rows: 10% 70% 10% 10%; */
+  /* grid-template-rows: 10% 65% 8% 7% 10%; */
 }
 .forecast div{
   margin-left: auto;
   margin-right: auto;
-  font-size: 2vw;
+  font-size: 2.5vw;
 }
 .forecast img{
   margin-left: auto;
   margin-right: auto;
   border-radius: 50%;
-  max-width: 100%;
+  width: 9vw;
 }
 .now-and-map{
   display: grid;
@@ -97,7 +80,7 @@ body{
   grid-template-rows: 15% 85%;
   margin-top: 2vw;
   margin-left: 1vw;
-  font-size: 1.7vw;
+  font-size: 2.3vw;
   box-shadow: 0 10px 20px rgba(0,0,0,0.6);
   border-radius: 2%;
   /* color:rgb(20, 1, 45); */
@@ -113,6 +96,10 @@ body{
 .weather-now img{
   width: 70%;
   justify-self:center;
+}
+
+.full-forecast-apixu .all-weather-now{
+  color:#fa5656;
 }
 
 .main-forecast{
@@ -136,7 +123,7 @@ body{
 }
 .hourly{
   border-bottom: 1px outset;
-  font-size: 1.4vw;
+  font-size: 2vw;
   display: grid;
   grid-template-columns: repeat(7,1fr);
   justify-content: center;
@@ -149,20 +136,71 @@ body{
   width:50%;
   justify-self: center;
   /* align-self: center; */
-
 }
 
-@media screen and (min-width: 650px) {
+.footer{
+  font-size: 1.5vw;
+  margin-top: 2vw;
+  color:rgb(245, 150, 23);
+  border-top: 2px ridge;
+  display: grid;
+  grid-template-rows: 55% 5% 10% 5% 10% 5% 10%;
+  padding: 0.5vw;
+  text-align: center;
+}
+
+.links{
+  display: grid;
+  grid-template-columns: 40% 10% 10% 40%;
+  align-items: center;
+  /* text-align: center; */
+}
+
+.apixuLogo{
+  width: 4vw;
+  max-width: 140px;
+}
+.openWeatherLogo{
+  width: 10vw;
+  max-width: 140px;
+}
+.mail{
+  text-decoration: none;
+  color:darkblue;
+}
+
+@media screen and (min-width: 730px) {
   .forecast div{
     margin-left: auto;
     margin-right: auto;
     font-size: 20px;
   }
+  .all-weather-now{
+    font-size: 1.7vw;
+  }
+  .hourly{
+    font-size: 1.7vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .forecast div{
+    font-size: 2.5vw;
+  }
+  .all-weather-now{
+    font-size: 2.5vw;
+  }
+  .hourly{
+    font-size: 2.5vw;
+  }
+  .footer{
+    font-size: 2.3vw;
+  }
 }
 
 @font-face {
 font-family: "Georgia";
-src: url("./fonts/georgia.ttf") format("truetype");
+src: url("./assets/georgia.ttf") format("truetype");
 font-style: normal;
 font-weight: normal;
 }

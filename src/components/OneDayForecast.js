@@ -1,19 +1,8 @@
 import React from 'react';
-// import OneDayInMain from './OneDayInMain';
 import For3Hours from './For3Hours';
 import '../App.css';
 
 class OneDayForecast extends React.Component {
-  state={
-    temp:undefined,
-    rain:undefined,
-    city:undefined,
-    wind:undefined,
-    pressure:undefined,
-    date:undefined,
-    img:undefined,
-    description:undefined,
-  }
 
   componentWillMount = async() =>{
     const all = this.props.getForecast;

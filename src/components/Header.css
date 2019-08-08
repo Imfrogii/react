@@ -1,0 +1,109 @@
+.header{
+  border-bottom: 2px ridge;
+  display: grid;
+  grid-template-columns: 25% 65% 10%;
+  max-height: 6vh;
+  height: 3vw;
+  padding: 0.5vw;
+  align-items: center;
+}
+.header .city{
+  /* display: flex; */
+  margin-left: auto;
+  margin-right: 2vw;
+  font-size: 2vw;
+  /* color: rgba(94, 175, 235, 0.97); */
+  color: #00CCFF;
+}
+.header ul{
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+.header ul li{
+  float: left;
+  margin-left: 5vw;
+  display: block;
+}
+.header ul li:hover{
+  color: blue;
+  /* font-size: 2.02vw; */
+  text-shadow: 2px 0px 3px black;
+}
+.logo{
+  /* display: flex; */
+  margin-left: 2vw;
+  font-size: 2vw;
+}
+
+.wrapper{
+  position: relative;
+  display: block;
+  width: 22vw;
+  height: 3vw;
+  background: #303030;
+  border-radius: 20%;
+  box-shadow: 0 5px 5px 3px rgba(0,0,0,0.4);
+  -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -ms-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -o-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  cursor: pointer;
+}
+.label {
+  -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -ms-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -o-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  cursor: pointer;
+}
+
+.OpenWeather {
+  border-radius: 20%;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  width: 11vw;
+  height: 3vw;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  text-align: center;
+  line-height: 3vw;
+  font-size: 1.7vw;
+  display: block;
+  background: #00CCFF;
+  -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -ms-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -o-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  cursor: pointer;
+  text-align: center;
+}
+
+#checkbox {
+  display: none;
+}
+
+
+.Apixu{
+  text-align: center;
+  line-height: 3vw;
+  font-size: 1.7vw;
+  left: 11vw;
+  border-radius: 20%;
+  background: #FC6666;
+  width: 11vw;
+  height: 3vw;
+  position: absolute;
+  top: 0px;
+  display: block;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -ms-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -o-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  cursor: pointer;
+}

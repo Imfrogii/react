@@ -5,18 +5,9 @@ class For3Hours extends React.Component {
 
   componentWillMount = async() =>{
     const all = this.props.weather;
-    console.log("1");
-    console.log(all);
-    // const {index} = this.props;
-    // const date = new Date(all[0].dt_txt).toLocaleString('ru', {
-    //   month: 'long',
-    //   day: 'numeric',
-    // });
-    // console.log(all);
     this.setState({
       temp:all.main.temp,
       rain:(all.rain)?all.rain["3h"]:null,
-      // city:all[0].city.name,
       windSpeed:all.wind.speed,
       windDeg:all.wind.deg,
       humidity:all.main.humidity,
@@ -25,7 +16,6 @@ class For3Hours extends React.Component {
       img:all.weather[0].icon,
       description:all.weather[0].description,
       count: all.length,
-      // date:date,
     })
   }
 
