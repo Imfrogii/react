@@ -1,5 +1,6 @@
 import React from 'react';
 import '../components/Header.css';
+import PropTypes from 'prop-types'
 
 let Header = (props) => {
   return (
@@ -8,16 +9,18 @@ let Header = (props) => {
     <input type="checkbox" id="checkbox" />
     <label className={"label "+props.api} htmlFor="checkbox" onClick={props.changeApi}>{props.api}</label>
     </div>
-      <ul>
-        <li className="logo">Сегодня</li>
-        <li className="logo">Завтра</li>
-        <li className="logo">3 дня</li>
-        <li className="logo">5 дней</li>
-      </ul>
-        <span className="city">{props.api==="Apixu"?props.cityApixu:props.cityOpenWeather}</span>
+    <span className="text-line">Погода в Вашем городе</span>
+    <span className="city">{props.api==="Apixu"?props.cityApixu:props.cityOpenWeather}</span>
 
     </header>
   );
+}
+
+Header.propTypes= {
+  api: PropTypes.string,
+  changeApi: PropTypes.func,
+  cityOpenWeather: PropTypes.string,
+  cityApixu: PropTypes.string,
 }
 
 export default Header;

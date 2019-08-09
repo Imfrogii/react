@@ -1,10 +1,10 @@
 import React from 'react';
 import '../App.css';
-import apixuLogo from "../assets/apixu.png"
-import openWeatherLogo from "../assets/openweather.png"
+import apixuLogo from "../assets/images/apixu.png"
+import openWeatherLogo from "../assets/images/openweather.png"
 
 
-function Footer(props) {
+let Footer = (props) => {
   return (
     <footer className="footer">
       <div className="links">

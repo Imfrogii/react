@@ -4,8 +4,10 @@ import Forecast4Days from './components/Forecast4Days';
 import OneDayForecast from './components/OneDayForecast';
 import ForecastNow from './components/ForecastNow';
 import Maps from './components/Map';
+import Links from './components/Links';
 import Footer from './components/Footer';
 import './App.css';
+import './assets/global.css'
 import { Link, Element} from 'react-scroll'
 class App extends React.Component {
 
@@ -89,7 +91,7 @@ class App extends React.Component {
 
         let apiForecastApixu = await fetch
               (`http://api.apixu.com/v1/forecast.json?key=${process.env.
-                REACT_APP_API_KEY_APIXU}&q=${this.latitude},${this.longitude}&days=7`)
+                REACT_APP_API_KEY_APIXU}&q=${this.latitude},${this.longitude}&days=4`)
         forecastApixu = await apiForecastApixu.json()
         localStorage.setItem("forecastApixu", JSON.stringify(forecastApixu));
         localStorage.setItem("latitude", this.latitude);
@@ -100,8 +102,8 @@ class App extends React.Component {
         // alert("Без запроса на сервер")
         forecastOpenWeather = JSON.parse(localStorage.getItem("forecastOpenWeather"));
         forecastApixu = JSON.parse(localStorage.getItem("forecastApixu"));
-        this.latitude = localStorage.getItem("latitude");
-        this.longitude = localStorage.getItem("longitude");
+        this.latitude = Number(localStorage.getItem("latitude"));
+        this.longitude = Number(localStorage.getItem("longitude"));
         this.setState({
           api: localStorage.getItem("api"),
         });
@@ -185,75 +187,74 @@ class App extends React.Component {
       return newApixu;
     }
 
+  renderApixu = () =>{
+    return(
+
+      <div className={"full-forecast-apixu not"+this.state.api}>
+        <div className="now-and-map">
+          <div className="forecast-and-now">
+            <div className="forecast-4Days" >
+              {this.state.weatherApixu.forecast.forecastday.map((day)=>
+              <a href="#" key={day.date}>
+                <Forecast4Days getForecast={this.prepare4DaysApixu(day)}/>
+              </a>)}
+            </div>
+            <ForecastNow getForecast={this.state.currentApixu}
+               city={this.state.weatherApixu.location.name}/>
+          </div>
+          <p></p>
+          <Maps latitude={this.latitude} longitude={this.longitude}/>
+        </div>
+      </div>
+
+    )
+  }
+
+  renderMainForecast = () => {
+    return(
+      <div className="main-forecast">
+        <span><strong> Погода на 5 дней подробно</strong></span>
+        <Element name="section1"><OneDayForecast getForecast=
+          {this.state.weather.list.slice(0,this.state.num)}/></Element>
+         <Element name="section2"><OneDayForecast id="section2" getForecast=
+          {this.state.weather.list.slice(this.state.num,this.state.num+8)}/></Element>
+        <Element name="section3"><OneDayForecast getForecast=
+          {this.state.weather.list.slice(this.state.num+8,this.state.num+16)}/></Element>
+        <Element name="section4"><OneDayForecast getForecast=
+          {this.state.weather.list.slice(this.state.num+16,this.state.num+24)}/></Element>
+        <Element name="section5"><OneDayForecast getForecast=
+          {this.state.weather.list.slice(this.state.num+24,this.state.num+32)}/></Element>
+      </div>
+    )
+  }
+
   render(){
     if(!this.state.ready) return false;
     return(
       <div>
-        <Header cityOpenWeather={this.state.weather.city.name} cityApixu={this.state.weatherApixu.location.name} changeApi={this.changeApi} api={this.state.api}/>
+        <Header cityOpenWeather={this.state.weather.city.name}
+           cityApixu={this.state.weatherApixu.location.name} changeApi={this.changeApi} api={this.state.api}/>
         <div className={"full-forecast-openWether no"+this.state.api}>
           <div className="now-and-map">
             <div className="forecast-and-now">
               <div className="forecast-4Days">
-                <Link activeClass="active" to="section1" spy={true} smooth={true}
-                  offset={-70} duration= {500}>
-                <Forecast4Days getForecast=
-                  {this.state.weather.list.slice(0,this.state.num)}/></Link>
-                  <Link activeClass="active" to="section2" spy={true} smooth={true}
-                    offset={-70} duration= {500}>
-                    <Forecast4Days getForecast=
-                  {this.state.weather.list.slice(this.state.num,this.state.num+8)}/></Link>
-                  <Link activeClass="active" to="section3" spy={true} smooth={true}
-                    offset={-70} duration= {500}>
-                    <Forecast4Days getForecast=
-                  {this.state.weather.list.slice(this.state.num+8,this.state.num+16)}/></Link>
-                  <Link activeClass="active" to="section4" spy={true} smooth={true}
-                    offset={-70} duration= {500}>
-                    <Forecast4Days getForecast=
-                  {this.state.weather.list.slice(this.state.num+16,this.state.num+24)}/></Link>
+                <Links to="section1"><Forecast4Days getForecast=
+                  {this.state.weather.list.slice(0,this.state.num)}/></Links>
+                <Links to="section2"><Forecast4Days getForecast=
+                  {this.state.weather.list.slice(this.state.num,this.state.num+8)}/></Links>
+                <Links to="section3"><Forecast4Days getForecast=
+                  {this.state.weather.list.slice(this.state.num+8,this.state.num+16)}/></Links>
+                <Links to="section4"><Forecast4Days getForecast=
+                  {this.state.weather.list.slice(this.state.num+16,this.state.num+24)}/></Links>
               </div>
               <ForecastNow getForecast={this.state.weather.list[0]} city={this.state.weather.city.name}/>
             </div>
             <p></p>
             <Maps latitude={this.latitude} longitude={this.longitude}/>
           </div>
-          <div className="main-forecast">
-            <span><strong> Погода на 5 дней подробно</strong></span>
-            <Element name="section1"><OneDayForecast getForecast={this.state.weather.list.slice(0,this.state.num)}
-               index={this.state.num}/></Element>
-             <Element name="section2"><OneDayForecast id="section2" getForecast=
-              {this.state.weather.list.slice(this.state.num,this.state.num+8)}
-              index={this.state.num}/></Element>
-            <Element name="section3"><OneDayForecast getForecast=
-              {this.state.weather.list.slice(this.state.num+8,this.state.num+16)}
-              index={this.state.num}/></Element>
-            <Element name="section4"><OneDayForecast getForecast=
-              {this.state.weather.list.slice(this.state.num+16,this.state.num+24)}
-              index={this.state.num}/></Element>
-            <Element name="section5"><OneDayForecast getForecast=
-              {this.state.weather.list.slice(this.state.num+24,this.state.num+32)}
-              index={this.state.num}/></Element>
-          </div>
+          {this.renderMainForecast()}
         </div>
-        <div className={"full-forecast-apixu not"+this.state.api}>
-          <div className="now-and-map">
-            <div className="forecast-and-now">
-              <div className="forecast-4Days">
-                <a href="#"><Forecast4Days getForecast=
-                      {this.prepare4DaysApixu(this.state.weatherApixu.forecast.forecastday[0])}/></a>
-                <a href="#"><Forecast4Days getForecast=
-                      {this.prepare4DaysApixu(this.state.weatherApixu.forecast.forecastday[1])}/></a>
-                <a href="#"><Forecast4Days getForecast=
-                      {this.prepare4DaysApixu(this.state.weatherApixu.forecast.forecastday[2])}/></a>
-                <a href="#"><Forecast4Days getForecast=
-                      {this.prepare4DaysApixu(this.state.weatherApixu.forecast.forecastday[3])}/></a>
-              </div>
-              <ForecastNow getForecast={this.state.currentApixu}
-                 city={this.state.weatherApixu.location.name}/>
-            </div>
-            <p></p>
-            <Maps latitude={this.latitude} longitude={this.longitude}/>
-          </div>
-        </div>
+        {this.renderApixu()}
         <Footer />
       </div>
     );

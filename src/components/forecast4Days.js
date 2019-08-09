@@ -1,9 +1,9 @@
 import React from 'react';
 import '../App.css';
-
+import PropTypes from 'prop-types'
 
 class Forecast4Days extends React.Component {
-  
+
   componentWillMount = () =>{
     const all = this.props.getForecast;
     const date = new Date(all[0].dt_txt).toLocaleString('ru', {
@@ -49,6 +49,10 @@ class Forecast4Days extends React.Component {
       </div>
     );
   }
+}
+
+Forecast4Days.propTypes= {
+  getForecast: PropTypes.array,
 }
 
 export default Forecast4Days;

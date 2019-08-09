@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import PropTypes from 'prop-types'
 
 class ForecastNow extends React.Component {
 
@@ -38,6 +39,11 @@ class ForecastNow extends React.Component {
         </div>
     );
   }
+}
+
+ForecastNow.propTypes= {
+  getForecast: PropTypes.object,
+  city: PropTypes.string,
 }
 
 export default ForecastNow;

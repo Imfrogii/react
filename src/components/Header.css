@@ -7,31 +7,18 @@
   padding: 0.5vw;
   align-items: center;
 }
-.header .city{
-  /* display: flex; */
+.text-line{
+  text-align: center;
+  font-size: 2.3vw;
+}
+.city{
   margin-left: auto;
   margin-right: 2vw;
   font-size: 2vw;
-  /* color: rgba(94, 175, 235, 0.97); */
   color: #00CCFF;
 }
-.header ul{
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-}
-.header ul li{
-  float: left;
-  margin-left: 5vw;
-  display: block;
-}
-.header ul li:hover{
-  color: blue;
-  /* font-size: 2.02vw; */
-  text-shadow: 2px 0px 3px black;
-}
+
 .logo{
-  /* display: flex; */
   margin-left: 2vw;
   font-size: 2vw;
 }
@@ -106,4 +93,13 @@
   -o-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .text-line{
+    font-size: 2.7vw;
+  }
+  .city{
+    font-size: 2.6vw;
+  }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 // export { default as Header} from './components/header';
 // export { default as Forecast4Days} from './components/forecast4Days';

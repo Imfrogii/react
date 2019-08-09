@@ -1,19 +1,13 @@
 body{
-  /* background-image: url("./images/back2.webp"); */
-  background-image: url("./assets/1.jpg");
+  background-image: url("./assets/images/backOpenWeather.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  /* transition: background-image 0.4s ease-out; */
 }
 .apixuImg{
-  background-image: url("./assets/2.jpg");
+  background-image: url("./assets/images/backApixu.jpg");
 }
 
-
-/* .full-forecast-apixu{
-  display: none;
-} */
 .noApixu{
   display: none;
 }
@@ -173,7 +167,7 @@ body{
   .forecast div{
     margin-left: auto;
     margin-right: auto;
-    font-size: 20px;
+    font-size: 1.7vw;
   }
   .all-weather-now{
     font-size: 1.7vw;
@@ -196,16 +190,4 @@ body{
   .footer{
     font-size: 2.3vw;
   }
-}
-
-@font-face {
-font-family: "Georgia";
-src: url("./assets/georgia.ttf") format("truetype");
-font-style: normal;
-font-weight: normal;
-}
-
-h1, p,h2, h3, h4, h5, h6, span, li{
-font-family: "Georgia";
-/* color: rgb(200, 209, 213); */
 }

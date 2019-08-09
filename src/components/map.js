@@ -1,6 +1,6 @@
 import React from "react";
-import "../App.css";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
+import PropTypes from 'prop-types'
 
 class Maps extends React.Component {
   constructor(props) {
@@ -51,14 +51,18 @@ class Maps extends React.Component {
       return false;
     }
       return (
-            // <Context.Provider value={{this.cord}}>
         <YMaps>
           <Map defaultState={this.mapData} className="y_map">
             <Placemark {...this.placeMark} />
           </Map>
         </YMaps>
-        // </Context.Provider>
       );
     }
 }
+
+Maps.propTypes= {
+  latitude: PropTypes.number,
+  longitude: PropTypes.number,
+}
+
 export default Maps;
